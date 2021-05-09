@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+{% block content %}
+  <!-- Form
+  ================================================== -->
+<div class="form">
+  <div class="container">
+    <div class="pic" style="text-align:center">
+      <img src="{{url_for('static', filename='tobypic.jpeg')}}" alt = "non" width="500" height="500"/>
+    </div>
+    <div class="row"  style="text-align:center">
+      <div class="col-md-12">
+        <p class="lead">
+          {% if name %}
+            {{ name }} 
+          {% else %}
+            {{ message }}
+          {% endif %}
+        </p>
+        <form action="/post" method="post" class="form-inline">
+          <input type="text" class="form-control" id="name" name="name" placeholder="Tell me!",  size="50">
+          <button type="submit" class="btn btn-default">Send</button>
+        </form>
+      </div>
+    </div>
+    <hr>
+    <div class = "analysis" >
+      <p class="score">
+        {% if score %}
+          toby's mood prediction score : {{ score }} 
+        {% endif %}
+      </p>
+      <p class="scorelist">
+        {% if listS %}
+          Break down score for each word : {{ listS }} 
+        {% endif %}
+      </p>
+    </div>
+  </div>
+</div>
+{% endblock %}
